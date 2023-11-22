@@ -12,10 +12,8 @@ const systemadminRouter = require('./routes/systemadminRouter.js')
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// var corsOptions = {
-// };
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use('/login', userRouter);
 app.use('/expenses', expensesRouter);
 app.use('/signup', signupRouter);

@@ -9,7 +9,7 @@ webpack.config.js
 
 # testing
 /coverage
-
+pusher.sh
 # production
 /build
 
