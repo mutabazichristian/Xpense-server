@@ -11,9 +11,11 @@ const systemadminRouter = require('./routes/systemadminRouter.js')
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-
+const corsOptions = {
+	origin: 'https://elegant-lokum-4a98c1.netlify.app'
+}
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use('/login', userRouter);
 app.use('/expenses', expensesRouter);
 app.use('/signup', signupRouter);
