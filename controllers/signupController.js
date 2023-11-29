@@ -36,7 +36,7 @@ const createUserAdmin = async (username, password, email) => {
             where: { email },
             defaults: {
                 username,
-                password,
+                adminPassword: password,
                 email,
                 createdAt: null,
                 updatedAt: null
