@@ -60,8 +60,8 @@ const createNewSystemAdmin = async (username, password, email) => {
             where: { email },
             defaults: {
                 username: username,
-                adminPassword: password,
                 email: email,
+                adminPassword: password,
             }
         })
         if (created) {
