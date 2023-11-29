@@ -15,8 +15,8 @@ const corsOptions = {
 	origin: 'https://elegant-lokum-4a98c1.netlify.app'
 }
 
-app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
 app.use('/login', userRouter);
 app.use('/signup', signupRouter);
 app.use('/expenses', expensesRouter);

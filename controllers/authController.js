@@ -119,9 +119,7 @@ const login = async (email, password) => {
 						userEmail: isSystemAdmin.dataValues.email,
 						token,
 						userType
-
 					}
-
 				}
 			} if (isPasswordCorrect == null) {
 				return {
