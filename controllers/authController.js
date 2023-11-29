@@ -56,7 +56,7 @@ const login = async (email, password) => {
 		const isUserAdmin = await UserAdmin.findOne({
 			where: { email, adminPassword: password }
 		})
-		if (!!isUserAmdin && !!isUserAdmin.dataValues) {
+	if (!!isUserAdmin && !!isUserAdmin.dataValues) {
 			console.log('it is a user admin');
 			userType = 'userAdmin';
 			const token = generateToken(isUserAdmin.dataValues.id, isUserAdmin.dataValues.email);
