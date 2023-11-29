@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 router.post('/systemadmin', async (req, res) => {
     try {
         const { username, password, email } = req.body;
-        console.log("Hi, routes to create new user, please")
+        console.log("Hi, routes to create new user, please");
         const newUser = await createNewSystemAdmin(username, email, password);
         if (newUser.isEmailTaken == true) {
             res.json('Email is Taken');
@@ -36,6 +36,7 @@ router.post('/systemadmin', async (req, res) => {
 
     } catch (error) {
         res.json('internal server error');
+        console.log('error trying to create new system admin:', error);
     }
 });
 

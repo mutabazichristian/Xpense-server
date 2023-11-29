@@ -57,7 +57,7 @@ const createUserAdmin = async (username, password, email) => {
 }
 
 const createNewSystemAdmin = async (username, password, email) => {
-    console.log('Trying to createa a new System Admin', user, password, email)
+    console.log('Trying to create a new System Admin', user, password, email)
     try {
         const [newSysAdmin, created] = await SystemAmdin.findOrCreate({
             where: { email },
