@@ -54,7 +54,7 @@ const login = async (email, password) => {
 
 		//CHECK IF IT IS USER ADMIN
 		const isUserAdmin = await UserAdmin.findOne({
-			where: { email, password }
+			where: { email, adminPassword: password }
 		})
 		if (!!isUserAmdin && !!isUserAdmin.dataValues) {
 			console.log('it is a user admin');
@@ -74,7 +74,7 @@ const login = async (email, password) => {
 
 		//CHECK IF IT IS A SYSTEM ADMIN
 		const isSystemAdmin = await SystemAdmin.findOne({
-			where: { email, password }
+			where: { email, adminPassword: password }
 		})
 		if (!!isSystemAdmin && !!isSystemAdmin.dataValues) {
 			console.log('it is a system admin');
