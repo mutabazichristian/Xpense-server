@@ -44,7 +44,7 @@ router.post('/systemadmin', async (req, res) => {
 router.post('/useradmin', async (req, res) => {
     try {
         const { username, password, email } = req.body;
-        const newUser = await createUserAdmin(username, email, password);
+        const newUser = await createUserAdmin(username, password, email);
         if (newUser.isEmailTaken == true) {
             res.json('Email is Taken');
         } else {
