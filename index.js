@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelizeConnection = require('./config/DB/database.js');
+const userRouter = require('./routes/userRouter.js');
 const useradminRouter = require('./routes/useradminRouter.js');
 const signupRouter = require('./routes/signupRouter.js');
 const expensesRouter = require('./routes/signupRouter.js');
