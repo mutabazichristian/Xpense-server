@@ -35,9 +35,9 @@ const createUserAdmin = async (username, password, email) => {
         const [newuseradmin, created] = await UserAdmin.findOrCreate({
             where: { email },
             defaults: {
-                username,
+                username: username,
                 adminPassword: password,
-                email,
+                email: email,
                 createdAt: null,
                 updatedAt: null
             }
