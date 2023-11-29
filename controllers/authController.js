@@ -56,7 +56,7 @@ const login = async (email, password) => {
 		const isUserAdmin = await UserAdmin.findOne({
 			where: { email, adminPassword: password }
 		})
-	if (!!isUserAdmin && !!isUserAdmin.dataValues) {
+		if (!!isUserAdmin && !!isUserAdmin.dataValues) {
 			console.log('it is a user admin');
 			userType = 'userAdmin';
 			const token = generateToken(isUserAdmin.dataValues.id, isUserAdmin.dataValues.email);
@@ -89,7 +89,7 @@ const login = async (email, password) => {
 		}
 
 	} catch (error) {
-		console.error(error);
+		console.log('Error while trying to find out what type of user', error);
 		return {
 			success: false,
 			data: { message: 'Internal Server Error' }
