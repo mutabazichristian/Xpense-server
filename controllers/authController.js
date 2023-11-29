@@ -29,44 +29,71 @@ const login = async (email, password) => {
 
 		//CHECK IF IT IS A USER??
 		const isUser = await User.findOne({
-			where: { email, password }
+			where: { email }
 		});
 
 		console.log('is user?', !!isUser);
 
 		if (!!isUser && !!isUser.dataValues) {
-			console.log('meh, just a user');
-			userType = 'user';
-			const token = generateToken(isUser.dataValues.userId, isUser.dataValues.email);
 
-			return {
-				success: true,
-				data: {
-					status: "success login",
-					userEmail: isUser.dataValues.email,
-					token,
-					userType
+			var isPasswordCorrect = await User.findOne({
+				where: { password }
+			})
+
+			if (isPasswordCorrect) {
+				console.log('meh, just a user');
+				userType = 'user';
+				const token = generateToken(isUser.dataValues.userId, isUser.dataValues.email);
+
+				return {
+					success: true,
+					data: {
+						status: "success login",
+						userEmail: isUser.dataValues.email,
+						token,
+						userType
+					}
+				};
+			} else {
+				return {
+					success: false,
+					data: {
+						status: 'incorrect password'
+					}
 				}
-			};
+			}
 
 		}
 
 
 		//CHECK IF IT IS USER ADMIN
 		const isUserAdmin = await UserAdmin.findOne({
-			where: { email, adminPassword: password }
+			where: { email }
 		})
 		if (!!isUserAdmin && !!isUserAdmin.dataValues) {
-			console.log('it is a user admin');
-			userType = 'userAdmin';
-			const token = generateToken(isUserAdmin.dataValues.id, isUserAdmin.dataValues.email);
-			return {
-				success: true,
-				data: {
-					status: "success login",
-					userEmail: isUserAdmin.dataValues.email,
-					token,
-					userType
+			var isPasswordCorrect = await UserAdmin.findOne({
+				where: { adminPassword: password }
+			})
+
+			if (isPasswordCorrect) {
+				console.log('it is a user admin');
+				userType = 'userAdmin';
+				const token = generateToken(isUserAdmin.dataValues.id, isUserAdmin.dataValues.email);
+				return {
+					success: true,
+					data: {
+						status: "success login",
+						userEmail: isUserAdmin.dataValues.email,
+						token,
+						userType
+					}
+				}
+			} else {
+				return {
+					success: false,
+					data: {
+						status: 'incorrect password'
+					}
 				}
 			}
 		}
@@ -74,20 +101,41 @@ const login = async (email, password) => {
 
 		//CHECK IF IT IS A SYSTEM ADMIN
 		const isSystemAdmin = await SystemAdmin.findOne({
-			where: { email, adminPassword: password }
+			where: { email }
 		})
 		if (!!isSystemAdmin && !!isSystemAdmin.dataValues) {
-			console.log('it is a system admin');
-			userType = 'systemadmin';
-			const token = generateToken(isSystemAdmin.dataValues.id, isSystemAdmin.dataValues.email);
-			return {
-				success: true,
-				data: {
-					status: 'success login',
-					userEmail: isSystemAdmin.dataValues.email,
-					token,
-					userType
+			var isPasswordCorrect = await SystemAdmin.findOne({
+				where: { adminPassword: password }
+			})
+			if (isPasswordCorrect) {
+				console.log('it is a system admin');
+				userType = 'systemadmin';
+				const token = generateToken(isSystemAdmin.dataValues.id, isSystemAdmin.dataValues.email);
+				return {
+					success: true,
+					data: {
+						status: 'success login',
+						userEmail: isSystemAdmin.dataValues.email,
+						token,
+						userType
 
+					}
+
+				}
+			} else {
+				return {
+					success: false,
+					data: {
+						status: 'incorrect password'
+					}
+				}
+			}
+		}
+		else {
+			return {
+				success: false,
+				data: {
+					message: 'Not account associated with this email'
 				}
 			}
 		}
