@@ -1,5 +1,4 @@
-const { where } = require('sequelize');
-const { User, SystemAmdin, UserAdmin } = require('../models/index.js');
+const { User, SystemAdmin, UserAdmin } = require('../models/index.js');
 
 const createNewUser = async (firstName, otherName, email, password, maxExpense) => {
     console.log('Trying to create a new user:', firstName, otherName, email, password, maxExpense);
@@ -52,14 +51,14 @@ const createUserAdmin = async (username, password, email) => {
         }
     } catch (error) {
         console.log('Error creating a New User Admin', errors)
-        return { isEmailTaken: flase, error: 'INternal Server Error' }
+        return { isEmailTaken: false, error: 'INternal Server Error' }
     }
 }
 
 const createNewSystemAdmin = async (username, password, email) => {
     console.log('Trying to create a new System Admin', username, password, email)
     try {
-        const [newSysAdmin, created] = await SystemAmdin.findOrCreate({
+        const [newSysAdmin, created] = await SystemAdmin.findOrCreate({
             where: { email },
             defaults: {
                 username,
@@ -78,7 +77,7 @@ const createNewSystemAdmin = async (username, password, email) => {
         }
     } catch (error) {
         console.log('Eorror creating a new System Admin', error)
-        return { isEmailTaken: flase, error: 'INternal Server Error' }
+        return { isEmailTaken: false, error: 'INternal Server Error' }
     }
 }
 
