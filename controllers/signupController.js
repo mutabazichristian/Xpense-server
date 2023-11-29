@@ -59,11 +59,9 @@ const createNewSystemAdmin = async (username, password, email) => {
         const [newSysAdmin, created] = await SystemAdmin.findOrCreate({
             where: { email },
             defaults: {
-                username,
-                password,
-                email,
-                createdAt: null,
-                updatedAt: null
+                username: username,
+                adminPassword: password,
+                email: email,
             }
         })
         if (created) {
