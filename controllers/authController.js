@@ -32,8 +32,7 @@ const login = async (email, password) => {
 			where: { email, password }
 		});
 
-		console.log(!!isUser);
-		console.log(isUser.dataValues);
+		console.log('is user?', !!isUser);
 
 		if (!!isUser && !!isUser.dataValues) {
 			console.log('meh, just a user');
