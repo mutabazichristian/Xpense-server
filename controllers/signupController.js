@@ -30,7 +30,7 @@ const createNewUser = async (firstName, otherName, email, password, maxExpense) 
 };
 
 const createUserAdmin = async (username, password, email) => {
-    console.log('Trying to createa a new User Admin', user, password, email)
+    console.log('Trying to createa a new User Admin', username, password, email)
     try {
         const [newuseradmin, created] = await UserAdmin.findOrCreate({
             where: { email },
@@ -38,8 +38,6 @@ const createUserAdmin = async (username, password, email) => {
                 username: username,
                 adminPassword: password,
                 email: email,
-                createdAt: null,
-                updatedAt: null
             }
         })
         if (created) {
@@ -50,7 +48,7 @@ const createUserAdmin = async (username, password, email) => {
             return { isEmailTaken: true }
         }
     } catch (error) {
-        console.log('Error creating a New User Admin', errors)
+        console.log('Error creating a New User Admin', error)
         return { isEmailTaken: false, error: 'INternal Server Error' }
     }
 }
