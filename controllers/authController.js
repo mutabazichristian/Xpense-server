@@ -55,7 +55,7 @@ const login = async (email, password) => {
 						userType
 					}
 				};
-			} else {
+			} if (isPasswordCorrect == null) {
 				return {
 					success: false,
 					data: {
@@ -89,7 +89,7 @@ const login = async (email, password) => {
 						userType
 					}
 				}
-			} else {
+			} if (isPasswordCorrect == null) {
 				return {
 					success: false,
 					data: {
@@ -123,7 +123,7 @@ const login = async (email, password) => {
 					}
 
 				}
-			} else {
+			} if (isPasswordCorrect == null) {
 				return {
 					success: false,
 					data: {
