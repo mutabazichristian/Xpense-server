@@ -26,6 +26,8 @@ router.post('/', async (req, res) => {
 router.post('/systemadmin', async (req, res) => {
     try {
         const { username, email, password } = req.body;
+        console.log('email', email);
+        console.log('password', password);
         console.log("Hi, routes to create new user, please");
         const newUser = await createNewSystemAdmin(username, email, password);
         if (newUser.isEmailTaken == true) {
