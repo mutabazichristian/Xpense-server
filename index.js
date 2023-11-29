@@ -14,11 +14,12 @@ const PORT = process.env.PORT || 8080;
 const corsOptions = {
 	origin: 'https://elegant-lokum-4a98c1.netlify.app'
 }
+
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use('/login', userRouter);
-app.use('/expenses', expensesRouter);
 app.use('/signup', signupRouter);
+app.use('/expenses', expensesRouter);
 app.use('/systemadmin', systemadminRouter);
 
 
@@ -30,7 +31,6 @@ sequelizeConnection.authenticate()
 	.then(() => {
 		app.listen(PORT, () => {
 			console.log(`Server is running on port ${PORT}.`);
-			console.log('this is the env username', process.env.DB)
 		});
 
 	})

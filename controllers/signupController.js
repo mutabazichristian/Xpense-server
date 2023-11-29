@@ -83,4 +83,4 @@ const createNewSystemAdmin = async (username, password, email) => {
 }
 
 
-module.exports = { createNewUser, createNewSystemAdmin };
+module.exports = { createNewUser, createUserAdmin, createNewSystemAdmin };
