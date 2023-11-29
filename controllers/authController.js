@@ -60,7 +60,7 @@ const login = async (email, password) => {
 				return {
 					success: false,
 					data: {
-						status: 'incorrect password',
+						message: 'incorrect password',
 						success: false
 					}
 				}
@@ -96,7 +96,7 @@ const login = async (email, password) => {
 				return {
 					success: false,
 					data: {
-						status: 'incorrect password',
+						message: 'incorrect password',
 						success: false
 					}
 				}
@@ -130,7 +130,7 @@ const login = async (email, password) => {
 				return {
 					success: false,
 					data: {
-						status: 'incorrect password',
+						message: 'incorrect password',
 						success: false
 					}
 				}
