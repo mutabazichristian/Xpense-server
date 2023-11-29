@@ -77,7 +77,7 @@ const createNewSystemAdmin = async (username, password, email) => {
             return { isEmailTaken: true }
         }
     } catch (error) {
-        console.log('Eorror creating a new System Admin', errors)
+        console.log('Eorror creating a new System Admin', error)
         return { isEmailTaken: flase, error: 'INternal Server Error' }
     }
 }
