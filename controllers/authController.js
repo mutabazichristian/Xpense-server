@@ -39,6 +39,7 @@ const login = async (email, password) => {
 			var isPasswordCorrect = await User.findOne({
 				where: { password }
 			})
+			console.log('is password correct?', isPasswordCorrect);
 
 			if (isPasswordCorrect) {
 				console.log('meh, just a user');
