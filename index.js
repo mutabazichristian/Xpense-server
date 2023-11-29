@@ -20,7 +20,9 @@ app.use(bodyParser.json());
 app.use('/login', userRouter);
 app.use('/signup', signupRouter);
 app.use('/expenses', expensesRouter);
+app.use('/useradmin',useradminRouter);
 app.use('/systemadmin', systemadminRouter);
+
 
 
 sequelizeConnection.authenticate()

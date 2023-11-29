@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
       res.status(200).json({ ...loginResult.data });
       console.log('these are the log in results', loginResult.data)
     } if (!loginResult.success) {
-      res.status(200).json({ ...loginResult.data });
+      res.status(200).json({ ...loginResult.data });  
     }
   } catch (error) {
     console.error('Router error:', error);
