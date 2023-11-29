@@ -52,14 +52,16 @@ const login = async (email, password) => {
 						status: "success login",
 						userEmail: isUser.dataValues.email,
 						token,
-						userType
+						userType,
+						success: true
 					}
 				};
 			} if (isPasswordCorrect == null) {
 				return {
 					success: false,
 					data: {
-						status: 'incorrect password'
+						status: 'incorrect password',
+						success: false
 					}
 				}
 			}
@@ -86,14 +88,16 @@ const login = async (email, password) => {
 						status: "success login",
 						userEmail: isUserAdmin.dataValues.email,
 						token,
-						userType
+						userType,
+						success: true
 					}
 				}
 			} if (isPasswordCorrect == null) {
 				return {
 					success: false,
 					data: {
-						status: 'incorrect password'
+						status: 'incorrect password',
+						success: false
 					}
 				}
 			}
@@ -118,14 +122,16 @@ const login = async (email, password) => {
 						status: 'success login',
 						userEmail: isSystemAdmin.dataValues.email,
 						token,
-						userType
+						userType,
+						success: true
 					}
 				}
 			} if (isPasswordCorrect == null) {
 				return {
 					success: false,
 					data: {
-						status: 'incorrect password'
+						status: 'incorrect password',
+						success: false
 					}
 				}
 			}
@@ -134,7 +140,8 @@ const login = async (email, password) => {
 			return {
 				success: false,
 				data: {
-					message: 'Not account associated with this email'
+					message: 'Not account associated with this email',
+					success: false
 				}
 			}
 		}
@@ -143,7 +150,10 @@ const login = async (email, password) => {
 		console.log('Error while trying to find out what type of user', error);
 		return {
 			success: false,
-			data: { message: 'Internal Server Error' }
+			data: {
+				message: 'Internal Server Error',
+				success: false
+			}
 		};
 	}
 };
