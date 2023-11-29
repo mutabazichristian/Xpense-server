@@ -81,10 +81,14 @@ const login = async (email, password) => {
 			userType = 'systemadmin';
 			const token = generateToken(isSystemAdmin.dataValues.id, isSystemAdmin.dataValues.email);
 			return {
-				status: true,
-				userEmail: isSystemAdmin.dataValues.email,
-				token,
-				userType
+				success: true,
+				data: {
+					status: 'success login',
+					userEmail: isSystemAdmin.dataValues.email,
+					token,
+					userType
+
+				}
 			}
 		}
 
