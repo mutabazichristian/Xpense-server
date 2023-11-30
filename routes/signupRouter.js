@@ -13,13 +13,13 @@ router.post('/', async (req, res) => {
         const { firstName, otherName, email, password, maxExpense } = req.body;
         const newUser = await createNewUser(firstName, otherName, email, password, maxExpense);
         if (newUser.isEmailTaken == true) {
-            res.json('Email is Taken');
+            res.json({ message: 'Email is Taken' });
         } else {
-            res.json('signedup');
+            res.json({ message: 'signedup' });
         }
 
     } catch (error) {
-        res.json('internal server error');
+        res.json({ message: 'internal server error' });
     }
 });
 
@@ -29,13 +29,13 @@ router.post('/systemadmin', async (req, res) => {
         console.log("Hi, routes to create new user, please");
         const newUser = await createNewSystemAdmin(username, email, password);
         if (newUser.isEmailTaken == true) {
-            res.json('Email is Taken');
+            res.json({ message: 'Email is Taken' });
         } else {
-            res.json('signedup');
+            res.json({ message: 'signedup' });
         }
 
     } catch (error) {
-        res.json('internal server error');
+        res.json({ message: 'internal server error' });
         console.log('error trying to create new system admin:', error);
     }
 });
@@ -46,13 +46,13 @@ router.post('/useradmin', async (req, res) => {
         const { username, password, email } = req.body;
         const newUser = await createUserAdmin(username, password, email);
         if (newUser.isEmailTaken == true) {
-            res.json('Email is Taken');
+            res.json({ message: 'Email is Taken' });
         } else {
-            res.json('signedup');
+            res.json({ message: 'signedup' });
         }
 
     } catch (error) {
-        res.json('internal server error');
+        res.json({ message: 'internal server error' });
     }
 });
 module.exports = router;
