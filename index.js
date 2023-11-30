@@ -6,7 +6,6 @@ const userRouter = require('./routes/userRouter.js');
 const signupRouter = require('./routes/signupRouter.js');
 const expensesRouter = require('./routes/signupRouter.js');
 const sequelizeConnection = require('./config/DB/database.js');
-const useradminRouter = require('./routes/useradminRouter.js');
 const systemadminRouter = require('./routes/systemadminRouter.js')
 // import userRouter from "./routes/userRouter.js";
 
@@ -21,7 +20,6 @@ app.use(bodyParser.json());
 app.use('/login', userRouter);
 app.use('/signup', signupRouter);
 app.use('/expenses', expensesRouter);
-app.use('/useradmin', useradminRouter);
 app.use('/systemadmin', systemadminRouter);
 
 
