@@ -1,11 +1,9 @@
-//EXPENSES CONTROLLER
-// import mysqlConnection from "./../config/DB/index.js";
-
-// import { Expense } from "./../models/index.cjs";
+import {Expense} from '../models/expense';
 
 const createExpenses = async (req, res) => {
 	console.log("create expense controller here!");
 	res.json("working");
+	console.log(req.data);
 	// const userid = 1;
 	// const title = req.body.newExpenseData[0];
 	// const category = req.body.newExpenseData[1];
@@ -46,6 +44,9 @@ const createExpenses = async (req, res) => {
 };
 
 const getAllExpenses = async (req, res) => {
+
+	const expenses = await Expense.findAll();
+	res.json({expenses})
 	// const queryGetExpense = "SELECT * FROM Expense";
 	// mysqlConnection.query(queryGetExpense, (error, result, fields) => {
 	// 	if (error) {
