@@ -1,4 +1,4 @@
-import {Expense} from '../models/expense';
+import { Expense } from '../models/expense';
 
 const createExpenses = async (req, res) => {
 	console.log("create expense controller here!");
@@ -44,9 +44,11 @@ const createExpenses = async (req, res) => {
 };
 
 const getAllExpenses = async (req, res) => {
-
+	console.log('trying to get all expenses');
 	const expenses = await Expense.findAll();
-	res.json({expenses})
+	console.log(expenses);
+
+	res.json({ expenses })
 	// const queryGetExpense = "SELECT * FROM Expense";
 	// mysqlConnection.query(queryGetExpense, (error, result, fields) => {
 	// 	if (error) {
